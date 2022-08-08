@@ -5,7 +5,10 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('sell-investment')
 		.setDescription('Sell investments to get money.')
-        .addStringOption(option => option.setName('code').setDescription('The code of the investment'))
+        .addStringOption(option => option.setName('code').setDescription('The code of the investment').addChoices(
+            { name: 'HugoCoin', value: 'HC'},
+            { name: 'PipoCoin', value: 'PC'},
+        ))        
         .addIntegerOption(option => option.setName('amount').setDescription('The amount of investments to sell')),
 	async execute(interaction) {
         // Send a POST request to the API to get the user's money amount and display it in chat with the reply function. 

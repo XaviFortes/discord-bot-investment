@@ -39,7 +39,7 @@ module.exports = {
             for (let i = 0; i < pData.length; i++) {
                 const investment = pData[i];
                 
-                message += `Code: ${investment.code} | Amount: ${investment.amount}\n`
+                message += `Code: ${investment.code}\t |\t Amount: ${investment.amount}\n`
             }
             console.log(message);
             return interaction.reply({ content: `${message}`, ephemeral: true });
