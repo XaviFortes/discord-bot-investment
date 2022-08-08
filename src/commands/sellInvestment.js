@@ -29,6 +29,7 @@ module.exports = {
             },
             body: JSON.stringify({
                 id: interaction.user.id,
+                username: interaction.user.username,
                 code: interaction.options.getString('code'),
                 amount: interaction.options.getInteger('amount')
 

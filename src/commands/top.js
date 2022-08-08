@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, AttachmentBuilder, EmbedBuilder, Client } = require('discord.js');
 const { parse } = require('path');
 const { request } = require('undici');
+const { ip } = require('../config.json');
 
 
 module.exports = {
@@ -17,7 +18,7 @@ module.exports = {
             body,
             bodyUsed
 
-         } = await request('http://localhost:8280/api/discord/top', {
+         } = await request(`http://${ip}:8280/api/discord/top`, {
             method: 'GET',
             //path: '/api/discord/user',
             headers: {
@@ -26,6 +27,7 @@ module.exports = {
             },
             body: JSON.stringify({
                 id: interaction.user.id,
+                username: interaction.user.username
             }),
         })
         for await (const data of body) {
@@ -41,12 +43,18 @@ module.exports = {
             .setColor(0x0099FF)
             .setTitle('Top richest people');
 
+            
+
             for (let i = 0; i < pData.length; i++) {
                 const investment = pData[i];
-                const user = Client.users.cache.get(`${investment.discordId}`);
+                // Fix properties of undefined (reading 'cache')
+                // Get username from the user's id.
+                
+                
+                const user = `<@${investment.discordId}>`;
                 
                 //message += `Code: ${investment.code}\t |\t Amount: ${investment.amount}\n`
-                topEmbed.addFields({name: `${user}`, value: `${investment.money}`})
+                topEmbed.addFields({name: `${investment.username}`, value: `${investment.money}`})
             }
             console.log(message);
             return interaction.reply({ embeds: [topEmbed] });

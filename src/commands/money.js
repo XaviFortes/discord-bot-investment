@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { request } = require('undici');
+const { ip } = require('../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -15,7 +16,7 @@ module.exports = {
             body,
             bodyUsed
 
-         } = await request('http://localhost:8280/api/discord/user', {
+         } = await request(`http://${ip}:8280/api/discord/user`, {
             method: 'POST',
             //path: '/api/discord/user',
             headers: {
@@ -23,7 +24,8 @@ module.exports = {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: interaction.user.id
+                id: interaction.user.id,
+                username: interaction.user.username
             }),
         })
         for await (const data of body) {
