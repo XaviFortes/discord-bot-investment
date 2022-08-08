@@ -42,7 +42,7 @@ module.exports = {
                 message += `Code: ${investment.code} | Amount: ${investment.amount}\n`
             }
             console.log(message);
-            return interaction.reply(`${message}`);
+            return interaction.reply({ content: `${message}`, ephemeral: true });
             //const message = parsedData.message
             console.log(message);
             return interaction.reply(`${message}`);
