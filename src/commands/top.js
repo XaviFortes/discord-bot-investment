@@ -1,6 +1,7 @@
-const { SlashCommandBuilder, AttachmentBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, AttachmentBuilder, EmbedBuilder, Client } = require('discord.js');
 const { parse } = require('path');
 const { request } = require('undici');
+
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -42,7 +43,7 @@ module.exports = {
 
             for (let i = 0; i < pData.length; i++) {
                 const investment = pData[i];
-                const user = client.users.cache.get(`${investment.discordId}`);
+                const user = Client.users.cache.get(`${investment.discordId}`);
                 
                 //message += `Code: ${investment.code}\t |\t Amount: ${investment.amount}\n`
                 topEmbed.addFields({name: `${user}`, value: `${investment.money}`})
