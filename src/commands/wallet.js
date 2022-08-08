@@ -31,13 +31,13 @@ module.exports = {
             console.log('data', data);
             // Parse the JSON data and return it.
             const parsedData = JSON.parse(data);
-            parsedData = parsedData.investments;
+            const pData = parsedData.investments;
             // Parse all the investments and display them in chat.
             // const investments = parsedData.investments
             let message = '';
             //message = parsedData;
-            for (let i = 0; i < parsedData.length; i++) {
-                const investment = parsedData[i];
+            for (let i = 0; i < pData.length; i++) {
+                const investment = pData[i];
                 
                 message += `Code: ${investment.code} | Amount: ${investment.amount}\n`
             }
