@@ -28,17 +28,18 @@ module.exports = {
             }),
         })
         for await (const data of body) {
-            console.log('data', data)
+            console.log('data', data);
             // Parse the JSON data and return it.
-            const parsedData = JSON.parse(data)
+            const parsedData = JSON.parse(data);
             // Parse all the investments and display them in chat.
             // const investments = parsedData.investments
-            let message = ''
-            for (let i = 0; i < parsedData.length; i++) {
-                const investment = parsedData[i];
-                
-                message += `Code: ${investment.investments.code} | Amount: ${investment.investments.amount}\n`
-            }
+            let message = '';
+            message = parsedData;
+            //for (let i = 0; i < parsedData.length; i++) {
+            //    const investment = parsedData[i];
+            //    
+            //    message += `Code: ${investment.investments.code} | Amount: ${investment.investments.amount}\n`
+            //}
             console.log(message);
             return interaction.reply(`${message}`);
             //const message = parsedData.message
