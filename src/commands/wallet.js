@@ -37,7 +37,7 @@ module.exports = {
             for (let i = 0; i < parsedData.length; i++) {
                 const investment = parsedData[i];
                 
-                message += `Code: ${investment.code} | Amount: ${investment.amount}\n`
+                message += `Code: ${investment.investments.code} | Amount: ${investment.investments.amount}\n`
             }
             console.log(message);
             return interaction.reply(`${message}`);
