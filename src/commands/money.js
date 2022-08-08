@@ -15,7 +15,7 @@ module.exports = {
             body,
             bodyUsed
 
-         } = await request('http://localhost:8080/api/discord/user', {
+         } = await request('http://localhost:8280/api/discord/user', {
             method: 'POST',
             //path: '/api/discord/user',
             headers: {
