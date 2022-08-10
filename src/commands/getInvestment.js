@@ -16,7 +16,7 @@ module.exports = {
             body,
             bodyUsed
 
-         } = await request('http://localhost:8280/api/invest/see', {
+         } = await request(`http://${ip}:8280/api/invest/see`, {
             method: 'POST',
             //path: '/api/discord/user',
             headers: {
@@ -34,24 +34,19 @@ module.exports = {
             // Parse all the investments and display them in chat.
             // const investments = parsedData.investments
 
-            let topEmbed = new EmbedBuilder()
+            let investmentsEmbed = new EmbedBuilder()
             .setColor(0x0099FF)
             .setTitle('All Investments')
-            .setDescription('Choose wisely.');            
+            //.setDescription('Choose wisely.')
+            ;            
 
             for (let i = 0; i < parsedData.length; i++) {
                 const investment = parsedData[i];
-                // Fix properties of undefined (reading 'cache')
-                // Get username from the user's id.
-                
-                
-                const user = `<@${investment.discordId}>`;
-                
-                //message += `Code: ${investment.code}\t |\t Amount: ${investment.amount}\n`
-                topEmbed.addFields({name: `${investment.name} *${investment.code}*`, value: `${investment.price}$`})
+
+                investmentsEmbed.addFields({name: `${investment.name} *${investment.code}*`, value: `${investment.price}$`})
             }
             console.log(message);
-            return interaction.reply({ embeds: [topEmbed] });
+            return interaction.reply({ embeds: [investmentsEmbed] });
 
             let message = ''
             for (let i = 0; i < parsedData.length; i++) {
