@@ -2,6 +2,12 @@ const { SlashCommandBuilder } = require('discord.js');
 const { parse } = require('path');
 const { request } = require('undici');
 const { ip } = require('../config.json');
+// Use fs to create logs folder if it doesn't exist. This is used to log the kicked users.
+const fs = require('fs');
+if (!fs.existsSync('../../logs')) {
+	fs.mkdirSync('../../logs');	
+}
+
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -37,7 +43,14 @@ module.exports = {
 			if (message === 'ok') {
 				const member = interaction.options.getMember('target');
 				member.voice.disconnect();
-				return interaction.reply({ content: 'Successfully kicked member.', ephemeral: true });
+				// Log the kicked user to a file.
+				fs.appendFile('../../logs/kicked.txt', `${member.user.username}#${member.user.discriminator} (${member.user.id})\n`, (err) => {
+					if (err) throw err;
+				});
+
+				return interaction.reply(`${member.user.username}#${member.user.discriminator} has been kicked from the voice channel.`);
+
+				//return interaction.reply({ content: 'Successfully kicked member.', ephemeral: true });
 			}
             return interaction.reply(`${message}`);
         }
