@@ -1,4 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { parse } = require('path');
+const { request } = require('undici');
+const { ip } = require('../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
