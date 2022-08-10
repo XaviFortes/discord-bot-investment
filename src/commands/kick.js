@@ -50,7 +50,7 @@ module.exports = {
 				const date = new Date();
 				logFile.write(`${date.toLocaleDateString()} ${date.toLocaleTimeString()} - ${interaction.user.username} kicked ${member.user.username} from ${interaction.channel.name}\n`);
 
-				return interaction.reply(`${member.user.username}#${member.user.discriminator} has been kicked from the voice channel.`);
+				return interaction.reply({ content: `${member.user.username}#${member.user.discriminator} has been kicked from the voice channel.`, ephemeral: true });
 
 				//return interaction.reply({ content: 'Successfully kicked member.', ephemeral: true });
 			}
