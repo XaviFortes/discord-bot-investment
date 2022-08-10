@@ -46,7 +46,9 @@ module.exports = {
 				member.voice.disconnect();
 				// Log the kicked user to a file.
 				// add timestamp to the log file.
-				logFile.write(`${new Date()} - ${interaction.user.username} kicked ${member.user.username} from ${interaction.channel.name}\n`);
+				// get short date and time.
+				const date = new Date();
+				logFile.write(`${date.toLocaleDateString()} ${date.toLocaleTimeString()} - ${interaction.user.username} kicked ${member.user.username} from ${interaction.channel.name}\n`);
 
 				return interaction.reply(`${member.user.username}#${member.user.discriminator} has been kicked from the voice channel.`);
 
