@@ -8,7 +8,10 @@ module.exports = {
 	async execute(interaction) {
 		const {
             statusCode,
-            body
+            headers,
+            trailers,
+            body,
+            bodyUsed
 
          } = await request(`http://${ip}:8280/api/discord/kick`, {
             method: 'POST',
@@ -18,8 +21,7 @@ module.exports = {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: interaction.user.id,
-                username: interaction.user.username
+                id: interaction.user.id
             }),
         })
         for await (const data of body) {
