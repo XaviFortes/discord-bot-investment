@@ -46,20 +46,20 @@ module.exports = {
 
                 investmentsEmbed.addFields({name: `${investment.name} *${investment.code}*`, value: `${investment.price}$`})
             }
-            console.log(message);
+            //console.log(message);
             return interaction.reply({ embeds: [investmentsEmbed] });
 
-            let message = ''
-            for (let i = 0; i < parsedData.length; i++) {
-                const investment = parsedData[i];
-                
-                message += `Name: ${investment.name} | Code: ${investment.code} | Price: ${investment.price}\n`
-            }
-            console.log(message);
-            return interaction.reply(`${message}`);
-            //const message = parsedData.message
-            console.log(message);
-            return interaction.reply(`${message}`);
+            // let message = ''
+            // for (let i = 0; i < parsedData.length; i++) {
+            //     const investment = parsedData[i];
+            //     
+            //     message += `Name: ${investment.name} | Code: ${investment.code} | Price: ${investment.price}\n`
+            // }
+            // console.log(message);
+            // return interaction.reply(`${message}`);
+            // //const message = parsedData.message
+            // console.log(message);
+            // return interaction.reply(`${message}`);
         }
 	},
 };
