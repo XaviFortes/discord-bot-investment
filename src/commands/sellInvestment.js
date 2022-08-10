@@ -41,7 +41,13 @@ module.exports = {
             const parsedData = JSON.parse(data)
             const message = parsedData.message
             console.log(message);
-            return interaction.reply(`${message}`);
+            if (message === 'Not enough investments!') {
+                return interaction.reply({ content: `${message}`, ephemeral: true });
+            } else if (message === 'Amount must be greater than 0!') {
+                return interaction.reply({ content: `${message}`, ephemeral: true });
+            } else {
+                return interaction.reply(`${message}`);
+            }
         }
 	},
 };

@@ -33,6 +33,26 @@ module.exports = {
             const parsedData = JSON.parse(data)
             // Parse all the investments and display them in chat.
             // const investments = parsedData.investments
+
+            let topEmbed = new EmbedBuilder()
+            .setColor(0x0099FF)
+            .setTitle('All Investments')
+            .setDescription('Choose wisely.');            
+
+            for (let i = 0; i < parsedData.length; i++) {
+                const investment = parsedData[i];
+                // Fix properties of undefined (reading 'cache')
+                // Get username from the user's id.
+                
+                
+                const user = `<@${investment.discordId}>`;
+                
+                //message += `Code: ${investment.code}\t |\t Amount: ${investment.amount}\n`
+                topEmbed.addFields({name: `${investment.name} *${investment.code}*`, value: `${investment.price}$`})
+            }
+            console.log(message);
+            return interaction.reply({ embeds: [topEmbed] });
+
             let message = ''
             for (let i = 0; i < parsedData.length; i++) {
                 const investment = parsedData[i];
