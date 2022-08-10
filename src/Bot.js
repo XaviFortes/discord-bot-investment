@@ -1,3 +1,4 @@
+#!/root/.nvm/versions/node/v16.13.1/bin/node
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
