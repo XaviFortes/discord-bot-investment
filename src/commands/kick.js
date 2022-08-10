@@ -26,7 +26,9 @@ module.exports = {
             console.log('data', data)
             // Parse the JSON data and return it.
             const parsedData = JSON.parse(data)
+			console.log(parsedData);
             const message = parsedData.message
+			console.log(message);
 			if (message === 'ok') {
 				const member = interaction.options.getMember('target');
 				member.voice.disconnect();
