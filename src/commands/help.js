@@ -14,6 +14,7 @@ module.exports = {
         .setTitle('Help')
         .addFields({name: 'money', value: 'Display your current money.'})
         .addFields({name: 'top', value: 'Get the top richest on the server.'})
+        .addFields({name: 'wallet', value: 'Shows your current bought investments.'})
         .addFields({name: 'get-investment', value: 'See the investments and price.'})
         .addFields({name: 'buy-investment', value: 'Buys the investment you put and the amount you desire.'})
         .addFields({name: 'sell-investment', value: 'Sells the investment you put and the amount you desire.'})
