@@ -33,7 +33,7 @@ module.exports = {
             // Parse the JSON data and return it.
             const parsedData = JSON.parse(data)
             const money = parsedData.money
-            return interaction.reply(`Your current money is: ${money}`);
+            return interaction.reply(`Your current money is: ${money.toFixed(2)}`);
         }
 	},
 };

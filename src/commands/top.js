@@ -54,7 +54,7 @@ module.exports = {
                 const user = `<@${investment.discordId}>`;
                 
                 //message += `Code: ${investment.code}\t |\t Amount: ${investment.amount}\n`
-                topEmbed.addFields({name: `${investment.username}`, value: `${investment.money}`})
+                topEmbed.addFields({name: `${investment.username}`, value: `${investment.money.toFixed(2)}$`})
             }
             console.log(message);
             return interaction.reply({ embeds: [topEmbed] });
